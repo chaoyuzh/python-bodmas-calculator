@@ -2,7 +2,7 @@ class Calculator:
 	def __init__(self, Input):
 		Input = Input.replace(" ", "") #Removing spaces to make it less complicated. 
 		inputList = [y for x,y in enumerate(Input)] #Making a list of all letters of the Input.. For Example 2+2 = ['2', '+', '2']
-		self.numList = [] 
+		self.numList = [] #num stands for numbers
 		self.opList = [] #op stands for operator 
 		self.tempNum = ''
 		self.N = ['1','2','3','4','5','6','7','8','9','0', '.'] #Accepted Characters for input as a number. 
@@ -39,10 +39,10 @@ class Calculator:
 		opList = []
 		brackets = False
 		for y,x in enumerate(inputList):
-			if str(x) is '(':
+			if str(x) == '(':
 				brackets = True 
 				continue 
-			elif str(x) is ')':
+			elif str(x) == ')':
 				brackets = False 
 				tempNum = self.solveBrackets(tempNum)
 				numList.append(tempNum)
@@ -64,27 +64,27 @@ class Calculator:
 
 	def solve(self, numList, opList):
 		for x,y in enumerate(opList):
-			if y is '^':
+			if y == '^':
 				numList[x] = float(numList[x]) ** numList[x+1]
 				numList.remove(numList[x+1])
 				opList.remove(y)
 		for x,y in enumerate(opList):
-			if y is '/':
+			if y == '/':
 				numList[x] = float(numList[x]) / numList[x+1]
 				numList.remove(numList[x+1])
 				opList.remove(y)
 		for x,y in enumerate(opList):
-			if y is '*':
+			if y == '*':
 				numList[x] = float(numList[x]) * numList[x+1]
 				numList.remove(numList[x+1])
 				opList.remove(y)
 		for x,y in enumerate(opList):
-			if y is '+':
+			if y == '+':
 				numList[x] = float(numList[x]) + numList[x+1]
 				numList.remove(numList[x+1])
 				opList.remove(y)
 		for x,y in enumerate(opList):
-			if y is '-':
+			if y == '-':
 				numList[x] = float(numList[x]) - numList[x+1]
 				numList.remove(numList[x+1])
 				opList.remove(y)
